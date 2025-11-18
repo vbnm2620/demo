@@ -144,24 +144,32 @@ export default function Shop() {
     <>
       <Header user={user} onSignIn={signIn} onSignOut={signOut} onSendTestNotification={onSendTestNotification}/>
 
-      <ProductCard
-        name="Apple Pie"
-        description="You know what this is. Pie. Apples. Apple pie."
-        price={3}
-        pictureURL="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Apple_pie.jpg/1280px-Apple_pie.jpg"
-        pictureCaption="Picture by Dan Parsons - https://www.flickr.com/photos/dan90266/42759561/, CC BY-SA 2.0, https://commons.wikimedia.org/w/index.php?curid=323125"
-        onClickBuy={() => orderProduct("Order Apple Pie", 3, { productId: 'apple_pie_1' })}
-      />
-      <ProductCard
-        name="Lemon Meringue Pie"
-        description="Non-contractual picture. We might have used oranges because we had no lemons. Order at your own risk."
-        price={5}
-        pictureURL="https://live.staticflickr.com/1156/5134246283_f2686ff8a8_b.jpg"
-        pictureCaption="Picture by Sistak - https://www.flickr.com/photos/94801434@N00/5134246283, CC BY-SA 2.0"
-        onClickBuy={() => orderProduct("Order Lemon Meringue Pie", 5, { productId: 'lemon_pie_1' })}
-      />
+    <ProductCard
+      name="Creator Token – Supporter"
+      description="크리에이터를 응원하는 기본 등급 토큰입니다. 모든 가격은 Pi Global Consensus Value(GCV)를 기준으로 설정됩니다."
+      price={3}
+      pictureURL="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Apple_pie.jpg/1280px-Apple_pie.jpg"
+      pictureCaption="Demo image for Supporter tier"
+      onClickBuy={() =>
+        orderProduct(
+          "Buy Creator Token – Supporter (GCV-based price)",
+          3,
+          { productId: "creator_supporter", pricingModel: "GCV" }
+        )
+      }
+    />
 
-      { showModal && <SignIn onSignIn={signIn} onModalClose={onModalClose} /> }
-    </>
-  );
-}
+    <ProductCard
+      name="Creator Token – Partner"
+      description="크리에이터 프로젝트에 장기적으로 참여하는 파트너 등급 토큰입니다. GCV를 기준으로 토큰 가치가 계산되는 정책을 따릅니다."
+      price={5}
+      pictureURL="https://live.staticflickr.com/1156/5134246283_f2686ff8a8_b.jpg"
+      pictureCaption="Demo image for Partner tier"
+      onClickBuy={() =>
+        orderProduct(
+          "Buy Creator Token – Partner (GCV-based price)",
+          5,
+          { productId: "creator_partner", pricingModel: "GCV" }
+        )
+      }
+    />
